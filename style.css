@@ -1,0 +1,449 @@
+/* Colors */
+:root {
+  /* Accent Colors */
+  --color-lime: hsl(61, 70%, 52%);
+  --color-red: hsl(4, 69%, 50%);
+
+  /* Neutral Colors */
+  --color-white: hsl(0, 0%, 100%);
+  --color-slate-100: hsl(202, 86%, 94%);
+  --color-slate-300: hsl(203, 41%, 72%);
+  --color-slate-500: hsl(200, 26%, 54%);
+  --color-slate-700: hsl(200, 24%, 40%);
+  --color-slate-900: hsl(202, 55%, 16%);
+}
+/* CSS Reset from : https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto; /*thats from me */
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+  /* text-align: center;  */
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* General Styling */
+body {
+  font-family: 'Plus Jakarta Sans', serif;
+  background-color: var(--color-slate-100);
+  display: grid;
+  place-content: center;
+  min-height: 100dvh;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin: 7px 0 6px;
+  color: var(--color-slate-700);
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--color-slate-500);
+}
+
+/* Layout */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 56.25rem;
+  border-radius: 0.5625rem;
+  overflow: hidden;
+}
+
+/* form styling */
+.calculator {
+  background-color: var(--color-white);
+  padding: 1.5rem 2rem;
+}
+
+form {
+  display: grid;
+  gap: 15px;
+}
+
+.heading {
+  color: var(--color-slate-900);
+}
+
+.flex_group {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+/* inputs next to each other */
+
+.flex_group__form {
+  display: flex;
+  gap: 30px;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+/* Container styling */
+.input_container {
+  position: relative;
+}
+
+/* Input field styling */
+.input_container input[type='number'] {
+  width: 100%;
+  padding: 0.4375rem;
+  border: 0.0625rem solid var(--color-slate-500);
+  color: var(--color-slate-900);
+  font-weight: 500;
+}
+
+.input_left_symbol input {
+  padding-left: 3.3125rem !important;
+}
+.input_right_symbol input {
+  padding: 0.4375rem 3.75rem 0.4375rem 0.5625rem !important;
+}
+
+.input_container input[type='number']:focus,
+.input_container:focus-within {
+  outline: none !important;
+  border-color: var(--color-lime);
+}
+
+.input_container:focus-within .symbol {
+  background-color: var(--color-lime);
+  color: var(--color-slate-900);
+}
+
+/* Symbol styling */
+.symbol {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-slate-100);
+  color: var(--color-slate-700);
+  font-weight: 500;
+  font-size: 1.125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.875rem;
+  height: 2.375rem;
+}
+
+/* Left-aligned symbol (e.g., £) */
+.input_container .symbol:first-child {
+  left: 1px;
+}
+
+/* Right-aligned symbols (e.g., years, %) */
+.input_container .symbol:last-child {
+  right: 1px;
+}
+
+.__big {
+  width: 56px;
+}
+
+/* i didn't know how to style this element to get close to the radio */
+.manual_spacing {
+  margin: 5px 0 -7px;
+}
+
+/* radio styling */
+
+.radio {
+  border: 1px solid var(--color-slate-500);
+  padding: 2px 0 0 11px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.radio:hover {
+  background-color: hsl(61, 70%, 90%);
+  border-color: var(--color-lime);
+}
+
+.radio input[type='radio'] {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--color-slate-500);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  background-color: var(--color-white);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.radio.checked {
+  background-color: hsl(61, 70%, 90%);
+  border-color: var(--color-lime);
+}
+
+.radio input[type='radio']:checked {
+  border-color: var(--color-lime);
+}
+
+.radio input[type='radio']::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: var(--color-lime);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.radio input[type='radio']:checked::before {
+  opacity: 1;
+}
+
+.radio label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: var(--color-slate-900);
+  font-weight: 700;
+}
+
+.radio_group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calculate {
+  cursor: pointer;
+  background-color: var(--color-lime);
+  color: var(--color-slate-900);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1.7rem;
+  gap: 7px;
+  justify-self: start;
+}
+
+/* results styling */
+
+.results {
+  background-color: var(--color-slate-900);
+  padding: 1rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 10px;
+  border-bottom-left-radius: 71px;
+}
+
+.results_header {
+  color: var(--color-white);
+}
+
+.results_text {
+  color: var(--color-slate-300);
+  font-weight: lighter;
+}
+/* errors */
+.error_message {
+  color: var(--color-red);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 4px;
+  text-align: start;
+}
+
+.radio_group .error_message {
+  margin-top: 0;
+}
+
+.input_error {
+  border-color: var(--color-red) !important;
+}
+
+.symbol_error {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+/* completed section */
+.completed {
+  background-color: var(--color-slate-900);
+  color: var(--color-slate-300);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.completed_header {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.completed_text {
+  
+}
+
+.result_item {
+  /* border: 3px solid #0e2431; */
+  background-color: #0e2431;
+  padding: 1rem;
+  border-top: 4px solid var(--color-lime);
+  border-radius: 9px 9px 0 0;
+  display: grid;
+  gap: 10px
+}
+.result_value {
+  color: var(--color-lime);
+  font-size: 50px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--color-slate-900);
+}
+
+.result_total {
+  color: var(--color-white);
+  font-size: 1.2rem;
+  
+}
+
+
+@media (max-width: 647px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 0;
+  }
+  .calculator {
+    padding: 0.9rem 1.1rem;
+  }
+
+  /* flex wrap here makes */
+  .flex_group__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .results {
+    border-bottom-left-radius: 0;
+  }
+  .calculate {
+    width: 100%;
+    padding: 5%;
+  }
+  .calculate img {
+    margin: 0;
+  }
+}
+
+/* this might exceed 400 lines of code */
+
+@media (max-width: 554px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-radius: 0;
+  }
+  .calculator {
+    padding: 1rem 1.5rem;
+  }
+  .results {
+    border-bottom-left-radius: 0;
+  }
+  .calculate {
+    width: 100%;
+  }
+  .calculate img {
+    margin: 0;
+  }
+}
