@@ -27,9 +27,11 @@
             <div class="input_container input_left_symbol">
               <span class="symbol">£</span>
               <input
+                type="number"
                 id="mortgage_amount"
                 name="mortgage_amount"
-                type="number"
+                step="any"
+                
               />
             </div>
           </div>
@@ -39,14 +41,14 @@
             <div class="inputs">
               <label for="mortgage_term">Mortgage Term</label>
               <div class="input_container input_right_symbol">
-                <input id="mortgage_term" name="mortgage_term" type="number" />
+                <input type="number" id="mortgage_term" name="mortgage_term" step="any"   />
                 <span class="symbol __big">years</span>
               </div>
             </div>
             <div class="inputs">
               <label for="interest_rate">Interest Rate</label>
               <div class="input_container input_right_symbol">
-                <input id="interest_rate" name="interest_rate" type="number" />
+                <input type="number" id="interest_rate" name="interest_rate" step="any"  />
                 <span class="symbol">%</span>
               </div>
             </div>
@@ -78,7 +80,7 @@
         </form>
       </section>
 
-      <section class="results" style="display: none">
+      <section class="results">
         <img src="assets/images/illustration-empty.svg" alt="" />
         <h1 class="results_header">Results Shown Here</h1>
         <p class="results_text">
@@ -87,7 +89,7 @@
         </p>
       </section>
 
-        <section class="completed">
+        <section class="completed hidden">
           <h1 class="completed_header">Your results</h1>
           <p class="completed_text">
             Your results are shown below based on the information you provided.
@@ -96,9 +98,9 @@
           </p>
           <div class="result_item">
             <span class="result_label">Your monthly repayments</span>
-            <span class="result_value">£1,797.74</span>
+            <span class="result_value">£0.00</span>
             <span class="result_label">Total you'll repay over the term</span>
-            <span class="result_total">£539,322.94</span>
+            <span class="result_total">£0.00</span>
           </div>
         </section>
       

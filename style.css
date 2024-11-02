@@ -85,6 +85,26 @@ h6 {
   isolation: isolate;
 }
 
+/* Removing the ugly default behavior of the  inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-white) inset !important;
+  box-shadow: 0 0 0 1000px var(--color-white) inset !important;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* General Styling */
 body {
   font-family: 'Plus Jakarta Sans', serif;
@@ -94,11 +114,8 @@ body {
   min-height: 100dvh;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
+
 
 label {
   display: block;
@@ -355,7 +372,7 @@ form {
   color: var(--color-slate-300);
   font-size: 16px;
   font-weight: 500;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem 4rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -367,7 +384,7 @@ form {
 }
 
 .completed_text {
-  
+  font-size: 15px;
 }
 
 .result_item {
@@ -377,7 +394,7 @@ form {
   border-top: 4px solid var(--color-lime);
   border-radius: 9px 9px 0 0;
   display: grid;
-  gap: 10px
+  gap: 10px;
 }
 .result_value {
   color: var(--color-lime);
@@ -389,9 +406,11 @@ form {
 .result_total {
   color: var(--color-white);
   font-size: 1.2rem;
-  
 }
 
+.hidden {
+  display: none;
+}
 
 @media (max-width: 647px) {
   body {

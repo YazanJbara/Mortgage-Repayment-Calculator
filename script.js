@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const interestRate = document.getElementById('interest_rate');
   const mortgageType = document.getElementsByName('mortgage_type');
   const radioGroup = document.querySelector('.radio_group');
+  const resultsSection = document.querySelector('.results');
+  const completedSection = document.querySelector('.completed');
+  const resultValue = document.querySelector('.result_value');
+  const resultTotal = document.querySelector('.result_total');
 
 
   document.querySelectorAll('.radio input[type="radio"]').forEach((radio) => {
@@ -66,8 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (valid) {
-      
-      console.log('Form is valid');
+      const principal = parseFloat(mortgageAmount.value);
+      const years = parseFloat(mortgageTerm.value);
+      const rate = parseFloat(interestRate.value) / 100 / 12;
+      const n = years * 12;
+
+      const monthlyRepayment = (principal * rate) / (1 - Math.pow(1 + rate, -n));
+      const totalRepayment = monthlyRepayment * n;
+
+      resultValue.textContent = `£${monthlyRepayment.toFixed(2)}`;
+      resultTotal.textContent = `£${totalRepayment.toFixed(2)}`;
+
+      resultsSection.classList.add('hidden');
+      completedSection.classList.remove('hidden');
     }
   });
 
