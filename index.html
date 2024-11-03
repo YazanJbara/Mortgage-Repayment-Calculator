@@ -19,7 +19,7 @@
       <section class="calculator">
         <div class="flex_group">
           <h1 class="heading">Mortgage Calculator</h1>
-          <a href="">Clear All</a>
+          <a href="#" id="clear_all">Clear All</a>
         </div>
         <form>
           <div class="inputs">
@@ -27,7 +27,7 @@
             <div class="input_container input_left_symbol">
               <span class="symbol">£</span>
               <input
-                type="number"
+                type="text"
                 id="mortgage_amount"
                 name="mortgage_amount"
                 step="any"
@@ -41,14 +41,14 @@
             <div class="inputs">
               <label for="mortgage_term">Mortgage Term</label>
               <div class="input_container input_right_symbol">
-                <input type="number" id="mortgage_term" name="mortgage_term" step="any"   />
+                <input type="text" id="mortgage_term" name="mortgage_term" step="any"   />
                 <span class="symbol __big">years</span>
               </div>
             </div>
             <div class="inputs">
               <label for="interest_rate">Interest Rate</label>
               <div class="input_container input_right_symbol">
-                <input type="number" id="interest_rate" name="interest_rate" step="any"  />
+                <input type="text" id="interest_rate" name="interest_rate" step="any"  />
                 <span class="symbol">%</span>
               </div>
             </div>

@@ -99,11 +99,11 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--color-white) inset !important;
 }
 
-input[type='number']::-webkit-inner-spin-button,
+/* input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 /* General Styling */
 body {
@@ -176,7 +176,7 @@ form {
 }
 
 /* Input field styling */
-.input_container input[type='number'] {
+.input_container input[type='text'] {
   width: 100%;
   padding: 0.4375rem;
   border: 0.0625rem solid var(--color-slate-500);
@@ -191,7 +191,7 @@ form {
   padding: 0.4375rem 3.75rem 0.4375rem 0.5625rem !important;
 }
 
-.input_container input[type='number']:focus,
+.input_container input[type='text']:focus,
 .input_container:focus-within {
   outline: none !important;
   border-color: var(--color-lime);

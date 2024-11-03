@@ -22,6 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Allow only numbers in the inputs
+  [mortgageAmount, mortgageTerm, interestRate].forEach(input => {
+    input.addEventListener('input', () => {
+      input.value = input.value.replace(/[^0-9.,]/g, '');
+    });
+  });
+
+  function removeCommas(value) {
+    return value.replace(/,/g, '');
+  }
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -70,16 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (valid) {
-      const principal = parseFloat(mortgageAmount.value);
-      const years = parseFloat(mortgageTerm.value);
-      const rate = parseFloat(interestRate.value) / 100 / 12;
+      const principal = parseFloat(removeCommas(mortgageAmount.value));
+      const years = parseFloat(removeCommas(mortgageTerm.value));
+      const rate = parseFloat(removeCommas(interestRate.value)) / 100 / 12;
       const n = years * 12;
 
       const monthlyRepayment = (principal * rate) / (1 - Math.pow(1 + rate, -n));
       const totalRepayment = monthlyRepayment * n;
 
-      resultValue.textContent = `£${monthlyRepayment.toFixed(2)}`;
-      resultTotal.textContent = `£${totalRepayment.toFixed(2)}`;
+      resultValue.textContent = `£${monthlyRepayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+      resultTotal.textContent = `£${totalRepayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
 
       resultsSection.classList.add('hidden');
       completedSection.classList.remove('hidden');
