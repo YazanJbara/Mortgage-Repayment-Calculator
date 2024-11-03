@@ -99,11 +99,6 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px var(--color-white) inset !important;
 }
 
-/* input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-} */
 
 /* General Styling */
 body {
@@ -137,11 +132,11 @@ a {
   max-width: 56.25rem;
   border-radius: 0.5625rem;
   overflow: hidden;
+  background-color: var(--color-white);
 }
 
 /* form styling */
 .calculator {
-  background-color: var(--color-white);
   padding: 1.5rem 2rem;
 }
 
@@ -218,12 +213,10 @@ form {
   height: 2.375rem;
 }
 
-/* Left-aligned symbol (e.g., £) */
 .input_container .symbol:first-child {
   left: 1px;
 }
 
-/* Right-aligned symbols (e.g., years, %) */
 .input_container .symbol:last-child {
   right: 1px;
 }
@@ -232,13 +225,11 @@ form {
   width: 56px;
 }
 
-/* i didn't know how to style this element to get close to the radio */
 .manual_spacing {
   margin: 5px 0 -7px;
 }
 
 /* radio styling */
-
 .radio {
   border: 1px solid var(--color-slate-500);
   padding: 2px 0 0 11px;
@@ -325,7 +316,6 @@ form {
 }
 
 /* results styling */
-
 .results {
   background-color: var(--color-slate-900);
   padding: 1rem;
@@ -444,8 +434,6 @@ form {
     margin: 0;
   }
 }
-
-/* this might exceed 400 lines of code */
 
 @media (max-width: 554px) {
   .container {
