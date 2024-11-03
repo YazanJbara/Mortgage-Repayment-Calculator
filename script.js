@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const completedSection = document.querySelector('.completed');
   const resultValue = document.querySelector('.result_value');
   const resultTotal = document.querySelector('.result_total');
-
+  const clearAll = document.getElementById('clear_all');
 
   document.querySelectorAll('.radio input[type="radio"]').forEach((radio) => {
     radio.addEventListener('change', function () {
@@ -85,8 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const rate = parseFloat(removeCommas(interestRate.value)) / 100 / 12;
       const n = years * 12;
 
-      const monthlyRepayment = (principal * rate) / (1 - Math.pow(1 + rate, -n));
-      const totalRepayment = monthlyRepayment * n;
+      let monthlyRepayment, totalRepayment;
+
+      if (document.getElementById('repayment').checked) {
+        // Repayment mortgage calculation
+        monthlyRepayment = (principal * rate) / (1 - Math.pow(1 + rate, -n));
+        totalRepayment = monthlyRepayment * n;
+      } else {
+        // Interest Only mortgage calculation
+        monthlyRepayment = principal * rate;
+        totalRepayment = (monthlyRepayment * n) + principal;
+      }
 
       resultValue.textContent = `£${monthlyRepayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
       resultTotal.textContent = `£${totalRepayment.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
@@ -94,6 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
       resultsSection.classList.add('hidden');
       completedSection.classList.remove('hidden');
     }
+  });
+
+  clearAll.addEventListener('click', (event) => {
+    event.preventDefault();
+    form.reset();
+    document.querySelectorAll('.radio').forEach((radioParent) => {
+      radioParent.classList.remove('checked');
+    });
+    document.querySelectorAll('.error_message').forEach((el) => el.remove());
+    document.querySelectorAll('.input_error').forEach((el) => el.classList.remove('input_error'));
+    document.querySelectorAll('.symbol_error').forEach((el) => el.classList.remove('symbol_error'));
+    resultsSection.classList.remove('hidden');
+    completedSection.classList.add('hidden');
   });
 
   
